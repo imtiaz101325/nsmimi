@@ -5,7 +5,7 @@ import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import reset from "styled-reset";
 import { Roboto_Flex } from "@next/font/google";
 
-import theme from "./theme";
+import theme from "../theme";
 
 const roboto = Roboto_Flex({
   subsets: ['latin'],
