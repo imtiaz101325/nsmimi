@@ -20,6 +20,42 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+const Nav = styled.nav`
+  position: fixed;
+  top: 44px;
+  padding: 0 122px;
+  width: calc(100% - 244px);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  z-index: 1;
+`;
+
+function Logo() {
+  return <Image src="/logo.svg" alt="logo" height={65} width={130} />
+}
+
+const MenuBox = styled.div`
+  height: 70px;
+  width: 101px;
+  background-color: ${props => props.theme.components.menu.colors.background};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const MenuLabel = styled.label`
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+`;
+
+function Menu() {
+  return <MenuBox>
+    <MenuLabel>Menu</MenuLabel>
+  </MenuBox>
+}
+
 const Footer = styled.footer`
   background-color: ${(props) => props.theme.colors.brown};
   width: 100vw;
@@ -95,6 +131,11 @@ export default function App({ Component, pageProps }: AppProps) {
             />
             <link rel="icon" href="/favicon.ico" />
           </Head>
+          
+          <Nav>
+            <Logo />
+            <Menu />
+          </Nav>
 
           <main>
             <Component {...pageProps} />
@@ -102,7 +143,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
           <Footer>
             <Wrapper>
-              <Image src="/logo.svg" alt="logo" height={65} width={130} />
               <Social>
                 {socials.map(({ link, icon, alt }) => (
                   <a href={link} key={alt}>
