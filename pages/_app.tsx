@@ -4,6 +4,7 @@ import Image from "next/image";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import reset from "styled-reset";
 import { Roboto_Flex } from "@next/font/google";
+import { Analytics } from '@vercel/analytics/react';
 
 import theme from "../theme";
 
@@ -160,6 +161,7 @@ export default function App({ Component, pageProps }: AppProps) {
           </Footer>
         </div>
       </ThemeProvider>
+      <Analytics />
     </>
   );
 }
