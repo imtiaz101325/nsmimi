@@ -70,7 +70,11 @@ const socials = [
   },
 ];
 
-const Copyright = styled.p``;
+const Copyright = styled.p`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+`;
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
