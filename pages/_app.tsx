@@ -23,9 +23,9 @@ const GlobalStyles = createGlobalStyle`
 const Nav = styled.nav`
   position: fixed;
   top: 44px;
-  left: calc((100vw - 1440px) / 2);
+  left: calc((100vw - ${props => props.theme.pageWidth}px) / 2);
   padding: 0 122px;
-  width: calc(1440px - 244px);
+  width: calc(${props => props.theme.pageWidth}px - 244px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -65,7 +65,7 @@ const Footer = styled.footer`
 
 const Wrapper = styled.div`
   height: 100%;
-  max-width: calc(1440px - 216px);
+  max-width: calc(${props => props.theme.pageWidth}px - 216px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;

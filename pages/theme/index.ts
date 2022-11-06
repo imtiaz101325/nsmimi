@@ -1,4 +1,5 @@
 const theme = {
+  pageWidth: 1440,
   colors: {
     white: "#FFFFFF",
     yellow: "#FCFF7E",
