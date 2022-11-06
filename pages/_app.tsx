@@ -2,14 +2,19 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import Image from "next/image";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
-import { Reset } from "styled-reset";
+import reset from "styled-reset";
 import { Roboto_Flex } from "@next/font/google";
 
 import theme from "./theme";
 
-const roboto = Roboto_Flex();
+const roboto = Roboto_Flex({
+  subsets: ['latin'],
+  axes: ["wdth"],
+  variable: "--roboto-font"
+});
 
 const GlobalStyles = createGlobalStyle`
+  ${reset}
   html {
     font-family: ${roboto.style.fontFamily}
   }
@@ -79,7 +84,6 @@ const Copyright = styled.p`
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Reset />
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <div>
