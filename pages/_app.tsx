@@ -23,8 +23,9 @@ const GlobalStyles = createGlobalStyle`
 const Nav = styled.nav`
   position: fixed;
   top: 44px;
+  left: calc((100vw - 1440px) / 2);
   padding: 0 122px;
-  width: calc(100% - 244px);
+  width: calc(1440px - 244px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -64,12 +65,13 @@ const Footer = styled.footer`
 
 const Wrapper = styled.div`
   height: 100%;
-  width: calc(100% - 216px);
+  max-width: calc(1440px - 216px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0 108px;
+  margin: 0 auto;
 `;
 
 const Social = styled.div`

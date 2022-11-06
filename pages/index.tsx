@@ -22,7 +22,7 @@ const Section = styled(Background)<SectionProps>`
     height: 100vh;
     width: 101px;
     position: absolute;
-    right: 122px;
+    right: calc(((100vw - 1440px) / 2) + 122px);
     background-color: ${(props) =>
       props.swimLaneColor
         ? props.theme.colors[props.swimLaneColor]
@@ -31,7 +31,7 @@ const Section = styled(Background)<SectionProps>`
 
   &:nth-child(even):before {
     right: 0;
-    left: 122px;
+    left: calc(((100vw - 1440px) / 2) + 122px);
   }
 `;
 
