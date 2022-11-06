@@ -143,9 +143,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
           <Footer>
             <Wrapper>
+              <Logo />
               <Social>
                 {socials.map(({ link, icon, alt }) => (
-                  <a href={link} key={alt}>
+                  <a href={link} key={alt} target="_blank" rel="noopener noreferrer">
                     <Image src={icon} alt={alt} height={30} width={30} />
                   </a>
                 ))}
