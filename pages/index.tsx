@@ -1,7 +1,4 @@
-import Head from "next/head";
-import styled, { ThemeProvider } from "styled-components";
-
-import theme from "./theme";
+import styled from "styled-components";
 
 const Background = styled.div`
   height: 100vh;
@@ -34,37 +31,22 @@ const SwimLane = styled.div<SwimLaneProps>`
 
 export default function Home() {
   return (
-    <ThemeProvider theme={theme}>
-      <div>
-        <Head>
-          <title>Mimi</title>
-          <meta
-            name="description"
-            content="Portfolio website of Niger Sultana Mimi"
-          />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-
-        <main>
-          <Section>
-            <SwimLane color="yellow" />
-          </Section>
-          <Section color="yellow">
-            <SwimLane left />
-          </Section>
-          <Section>
-            <SwimLane color="sky" />
-          </Section>
-          <Section color="sky">
-            <SwimLane left />
-          </Section>
-          <Section>
-            <SwimLane color="brown" />
-          </Section>
-        </main>
-
-        <footer></footer>
-      </div>
-    </ThemeProvider>
+    <>
+      <Section>
+        <SwimLane color="yellow" />
+      </Section>
+      <Section color="yellow">
+        <SwimLane left />
+      </Section>
+      <Section>
+        <SwimLane color="sky" />
+      </Section>
+      <Section color="sky">
+        <SwimLane left />
+      </Section>
+      <Section>
+        <SwimLane color="brown" />
+      </Section>
+    </>
   );
 }
