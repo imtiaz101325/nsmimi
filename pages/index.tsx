@@ -21,7 +21,7 @@ const Section = styled.div<SectionProps>`
     height: 100vh;
     width: 101px;
     position: absolute;
-    right: calc(((100vw - ${props => props.theme.pageWidth}px) / 2) + 122px);
+    right: calc(((100vw - ${(props) => props.theme.pageWidth}px) / 2) + 122px);
     background-color: ${(props) =>
       props.swimLaneColor
         ? props.theme.colors[props.swimLaneColor]
@@ -30,12 +30,12 @@ const Section = styled.div<SectionProps>`
 
   &:nth-child(even):before {
     right: 0;
-    left: calc(((100vw - ${props => props.theme.pageWidth}px) / 2) + 122px);
+    left: calc(((100vw - ${(props) => props.theme.pageWidth}px) / 2) + 122px);
   }
 `;
 
 const Content = styled.div`
-  max-width: ${props => props.theme.pageWidth}px;
+  max-width: ${(props) => props.theme.pageWidth}px;
   margin: 0 auto;
   height: 100%;
   position: relative;
@@ -58,9 +58,19 @@ const FocusedText = styled.b`
   font-weight: 600;
 `;
 
-const ImageYFCResponsive = styled(Image)`
+interface ProjectImageProps {
+  right?: boolean;
+  margin?: number;
+}
+
+const ProjectImage = styled(Image)<ProjectImageProps>`
   position: relative;
-  margin-left: 102px;
+  ${(props) => {
+    if (props.right) {
+      return `margin-right: ${props.margin || 102}px;`;
+    }
+    return `margin-left: ${props.margin || 102}px;`;
+  }}
 `;
 
 const ProjectContainer = styled.div`
@@ -112,12 +122,7 @@ interface ProjectProps {
   readonly linkTo: string;
 }
 
-function Project({
-  title,
-  subtitle,
-  desc,
-  linkTo
-}: ProjectProps) {
+function Project({ title, subtitle, desc, linkTo }: ProjectProps) {
   return (
     <ProjectContainer>
       <Title>{title}</Title>
@@ -125,7 +130,7 @@ function Project({
       <Description>{desc}</Description>
       <CallToAction href={linkTo}>View Case Study</CallToAction>
     </ProjectContainer>
-  )
+  );
 }
 
 export default function Home() {
@@ -154,7 +159,12 @@ export default function Home() {
       </Section>
       <Section backgroundColor="yellow">
         <Content>
-          <ImageYFCResponsive src="/home/yfcresponsivepic.png" alt="responsive_website_design" width={585} height={675} />
+          <ProjectImage
+            src="/home/yfcresponsivepic.png"
+            alt="responsive_website_design"
+            width={585}
+            height={675}
+          />
           <Project
             linkTo="/"
             title="Youth For Change"
@@ -164,35 +174,55 @@ export default function Home() {
         </Content>
       </Section>
       <Section swimLaneColor="sky">
-      <Content>
-          <ImageYFCResponsive src="/home/yfcresponsivepic.png" alt="responsive_website_design" width={585} height={675} />
+        <Content>
           <Project
             linkTo="/"
-            title="Youth For Change"
-            subtitle="A Responsive Website for a social organization of Bangladesh"
-            desc="Youth for Change Bangladesh is a social organization. The goal of Youth For Change Bangladesh is to ensure women empowerment and gender equity at the fullest sense."
+            title="Youth For Change Social App"
+            subtitle="For learning about Sexual and Reproductive Health and Rights"
+            desc="Youth for Change is a Bangladesh-based  social organization focused on youth and it’s rights. The organization needs a tool that helps people learn about Sexual and Reproductive Health and Rights. Youth for Change Bangladesh’s primary target users include, teenagers, college students, and adults who are concerned with the youth right and would like to learn more about what they can do to enrich knowledge."
+          />
+          <ProjectImage
+            src="/home/yfcapppic.png"
+            alt="responsive_website_design"
+            width={575}
+            height={570}
+            margin={66}
+            right
           />
         </Content>
       </Section>
       <Section backgroundColor="sky">
-      <Content>
-          <ImageYFCResponsive src="/home/yfcresponsivepic.png" alt="responsive_website_design" width={585} height={675} />
+        <Content>
+          <ProjectImage
+            src="/home/catadopterreponsivepic.png"
+            alt="responsive_website_design"
+            width={799}
+            height={491}
+            margin={30}
+          />
           <Project
             linkTo="/"
-            title="Youth For Change"
-            subtitle="A Responsive Website for a social organization of Bangladesh"
-            desc="Youth for Change Bangladesh is a social organization. The goal of Youth For Change Bangladesh is to ensure women empowerment and gender equity at the fullest sense."
+            title="Catadopter"
+            subtitle="A Responsive Website for cat adoption"
+            desc="I have designed a  responsive website for getting cats adopted or adopting one online which save user’s time. It is one of my personal project’s where found the urgency for getting my cats adopted and faced many unknown consequences. These events inspired me to design a user friendly and useful website for adopting cats and getting adopted one."
           />
         </Content>
       </Section>
       <Section swimLaneColor="brown">
-      <Content>
-          <ImageYFCResponsive src="/home/yfcresponsivepic.png" alt="responsive_website_design" width={585} height={675} />
+        <Content>
           <Project
             linkTo="/"
-            title="Youth For Change"
-            subtitle="A Responsive Website for a social organization of Bangladesh"
-            desc="Youth for Change Bangladesh is a social organization. The goal of Youth For Change Bangladesh is to ensure women empowerment and gender equity at the fullest sense."
+            title="ArtiestBio App"
+            subtitle="For art galleries"
+            desc="This is my very first projrct. In this project, I had created a new artist bio app to help people find about artists, events and buying art event tickets so that  they can skip physical labor and the payment process is streamlined."
+          />
+          <ProjectImage
+            src="/home/artiesbioappic.png"
+            alt="responsive_website_design"
+            width={608}
+            height={572}
+            margin={122}
+            right
           />
         </Content>
       </Section>

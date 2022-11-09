@@ -4,14 +4,14 @@ import Image from "next/image";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import reset from "styled-reset";
 import { Roboto_Flex } from "@next/font/google";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 
 import theme from "../theme";
 
 const roboto = Roboto_Flex({
-  subsets: ['latin'],
+  subsets: ["latin"],
   axes: ["wdth"],
-  variable: "--roboto-font"
+  variable: "--roboto-font",
 });
 
 const GlobalStyles = createGlobalStyle`
@@ -24,23 +24,39 @@ const GlobalStyles = createGlobalStyle`
 const Nav = styled.nav`
   position: fixed;
   top: 44px;
-  left: calc((100vw - ${props => props.theme.pageWidth}px) / 2);
+  left: calc((100vw - ${(props) => props.theme.pageWidth}px) / 2);
   padding: 0 122px;
-  width: calc(${props => props.theme.pageWidth}px - 244px);
+  width: calc(${(props) => props.theme.pageWidth}px - 244px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   z-index: 1;
 `;
 
-function Logo() {
-  return <Image src="/logo.svg" alt="logo" height={65} width={130} />
+const LogoContainer = styled.div`
+  background-color: ${(props) => props.theme.components.menu.colors.background};
+`;
+
+interface LogoProps {
+  background?: boolean;
+}
+
+function Logo({ background }: LogoProps) {
+  if (background) {
+    return (
+      <LogoContainer>
+        <Image src="/logo.svg" alt="logo" height={70} width={101} />
+      </LogoContainer>
+    );
+  }
+
+  return <Image src="/logo.svg" alt="logo" height={70} width={101} />;
 }
 
 const MenuBox = styled.div`
   height: 70px;
   width: 101px;
-  background-color: ${props => props.theme.components.menu.colors.background};
+  background-color: ${(props) => props.theme.components.menu.colors.background};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,9 +69,11 @@ const MenuLabel = styled.label`
 `;
 
 function Menu() {
-  return <MenuBox>
-    <MenuLabel>Menu</MenuLabel>
-  </MenuBox>
+  return (
+    <MenuBox>
+      <MenuLabel>Menu</MenuLabel>
+    </MenuBox>
+  );
 }
 
 const Footer = styled.footer`
@@ -66,7 +84,7 @@ const Footer = styled.footer`
 
 const Wrapper = styled.div`
   height: 100%;
-  max-width: calc(${props => props.theme.pageWidth}px - 216px);
+  max-width: calc(${(props) => props.theme.pageWidth}px - 216px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -125,41 +143,44 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <div>
-          <Head>
-            <title>Mimi</title>
-            <meta
-              name="description"
-              content="Portfolio website of Niger Sultana Mimi"
-            />
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-          
-          <Nav>
+        <Head>
+          <title>Mimi</title>
+          <meta
+            name="description"
+            content="Portfolio website of Niger Sultana Mimi"
+          />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+
+        <Nav>
+          <Logo background/>
+          <Menu />
+        </Nav>
+
+        <main>
+          <Component {...pageProps} />
+        </main>
+
+        <Footer>
+          <Wrapper>
             <Logo />
-            <Menu />
-          </Nav>
-
-          <main>
-            <Component {...pageProps} />
-          </main>
-
-          <Footer>
-            <Wrapper>
-              <Logo />
-              <Social>
-                {socials.map(({ link, icon, alt }) => (
-                  <a href={link} key={alt} target="_blank" rel="noopener noreferrer">
-                    <Image src={icon} alt={alt} height={30} width={30} />
-                  </a>
-                ))}
-              </Social>
-              <Copyright>
-                Website design and content &copy; 2022 Niger Sultana Mimi.
-              </Copyright>
-            </Wrapper>
-          </Footer>
-        </div>
+            <Social>
+              {socials.map(({ link, icon, alt }) => (
+                <a
+                  href={link}
+                  key={alt}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src={icon} alt={alt} height={30} width={30} />
+                </a>
+              ))}
+            </Social>
+            <Copyright>
+              Website design and content &copy; 2022 Niger Sultana Mimi.
+            </Copyright>
+          </Wrapper>
+        </Footer>
       </ThemeProvider>
       <Analytics />
     </>
