@@ -1,6 +1,8 @@
 import Image from "next/image";
 import styled from "styled-components";
+
 import { Project } from "../components";
+
 import { useMediaQuery } from "../hooks";
 import { devices, sizes } from "../utils";
 
@@ -40,13 +42,13 @@ const Section = styled.div<SectionProps>`
     &:before {
       width: 127px;
       right: calc(
-        ((100vw - ${(props) => props.theme.tabWidth}px) / 2) + 128px
+        ((100vw - ${(props) => props.theme.tabWidth}px) / 2) + 64px
       );
     }
 
     &:nth-child(even):before {
       right: 0;
-      left: calc(((100vw - ${(props) => props.theme.tabWidth}px) / 2) + 128px);
+      left: calc(((100vw - ${(props) => props.theme.tabWidth}px) / 2) + 64px);
     }
   }
 
@@ -97,13 +99,21 @@ const Intro = styled.p`
   font-size: 20px;
   line-height: 22px;
 
+  @media ${devices.tablet} {
+    max-width: 490px;
+
+    font-size: 32px;
+    line-height: 40px;
+
+    text-align: center;
+  }
+
   @media ${devices.laptop} {
     max-width: 954px;
     font-weight: 300;
     font-stretch: 75%;
     font-size: 32px;
     line-height: 36px;
-    text-align: center;
   }
 `;
 

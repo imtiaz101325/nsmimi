@@ -4,17 +4,23 @@ import { useMediaQuery } from "../hooks";
 import { devices, sizes } from "../utils";
 
 const MenuBox = styled.div`
+  width: 33px;
+  height: 14px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 33px;
-  height:14px;
+
+  background-color: ${(props) => props.theme.components.menu.colors.background};
+
+  @media ${devices.tablet} {
+    height: 62px;
+    width: 127px;
+  }
 
   @media ${devices.laptop} {
     height: 70px;
     width: 101px;
-    background-color: ${(props) =>
-      props.theme.components.menu.colors.background};
   }
 `;
 
@@ -26,7 +32,7 @@ const MenuLabel = styled.label`
 
 export default function Menu() {
   const isLaptop = useMediaQuery(sizes.laptop);
-  
+
   return (
     <MenuBox>
       {isLaptop ? (
