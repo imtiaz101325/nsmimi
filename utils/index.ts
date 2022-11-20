@@ -1,0 +1,1 @@
+export { default as devices, sizes } from './devices';

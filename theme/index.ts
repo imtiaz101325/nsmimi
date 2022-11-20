@@ -1,5 +1,6 @@
 const theme = {
   pageWidth: 1440,
+  screenWidth: 360,
   colors: {
     white: "#FFFFFF",
     yellow: "#FCFF7E",
@@ -7,6 +8,11 @@ const theme = {
     brown: "#FFE2AF",
   },
   components: {
+    nav: {
+      colors: {
+        background: "rgba(255, 255, 255, .60)",
+      },
+    },
     menu: {
       colors: {
         background: "rgba(255, 255, 255, .85)",
