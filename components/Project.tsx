@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { devices } from "../utils";
 
 const ProjectContainer = styled.div`
-  max-width: 296px;
+  max-width: 312px;
   margin: 0 auto;
 
   display: flex;
@@ -44,43 +44,55 @@ const ProjectContainer = styled.div`
 `;
 const Title = styled.h1`
   font-weight: 900;
-  font-size: 34px;
-  line-height: 34px;
+  font-size: 36px;
+  line-height: 36px;
+
   margin-bottom: 1rem;
 
   @media ${devices.tablet} {
-    font-size: 40px;
+    font-size: 64px;
+    line-height: 64px;
   }
 
   @media ${devices.laptop} {
     font-weight: 800;
+    font-size: 48px;
+    line-height: 36px;
   }
 `;
 const Subtitle = styled.p`
   font-weight: 800;
   font-size: 14px;
   line-height: 14px;
+
   margin-bottom: 2rem;
+
+  @media ${devices.tablet} {
+    font-size: 24px;
+    line-height: 24px;
+  }
 
   @media ${devices.laptop} {
     font-weight: 300;
-    font-size: 24px;
-    line-height: 22px;
-    margin-bottom: 2rem;
   }
 `;
 const Description = styled.p`
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  margin-bottom: 64px;
+
+  margin-bottom: 4rem;
 
   text-align: left;
+
+  @media ${devices.tablet} {
+    font-size: 16px;
+    line-height: 20px;
+  }
 
   @media ${devices.laptop} {
     font-size: 16px;
     line-height: 20px;
-    margin-bottom: 64px;
   }
 `;
 const CallToAction = styled(Link)`
@@ -110,7 +122,13 @@ interface ProjectProps {
   children?: ReactNode;
 }
 
-export default function Project({ title, subtitle, desc, linkTo, children }: ProjectProps) {
+export default function Project({
+  title,
+  subtitle,
+  desc,
+  linkTo,
+  children,
+}: ProjectProps) {
   return (
     <ProjectContainer>
       <Title>{title}</Title>
