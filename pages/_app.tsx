@@ -41,7 +41,7 @@ function getLogoDimensions({
     return [62, 117.73];
   }
 
-  return [14.71, 28.18];
+  return [14.71, 33];
 }
 
 export default function App({ Component, pageProps }: AppProps) {
