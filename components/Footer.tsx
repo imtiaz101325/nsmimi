@@ -39,6 +39,8 @@ const Wrapper = styled.div`
   @media ${devices.laptop} {
     height: 100%;
     max-width: calc(${(props) => props.theme.pageWidth}px - 216px);
+    
+    align-items: center;
 
     padding: 0 108px;
   }
