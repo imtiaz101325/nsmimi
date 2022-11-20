@@ -54,10 +54,19 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <Head>
-          <title>Mimi</title>
+          <title>Mimi | Portfolio</title>
           <meta
             name="description"
-            content="Portfolio website of Niger Sultana Mimi"
+            content="Hi, I am Niger Sultana Mimi. This is my portfolio website. You can find my case studies of visual UX design work here."
+            key="desc"
+          />
+          <meta
+            property="og:title"
+            content="Mimi | Portfolio"
+          />
+          <meta
+            property="og:description"
+            content="Check out my portfolio website and case studies."
           />
           <link rel="icon" href="/favicon.ico" />
         </Head>

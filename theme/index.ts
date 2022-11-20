@@ -11,12 +11,12 @@ const theme = {
   components: {
     nav: {
       colors: {
-        background: "rgba(255, 255, 255, .60)",
+        background: "rgba(255, 255, 255, 0.60)",
       },
     },
     menu: {
       colors: {
-        background: "rgba(255, 255, 255, .85)",
+        background: "rgba(255, 255, 255, 0.85)",
       },
     },
   },
