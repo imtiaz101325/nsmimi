@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 export default function App({ Component, pageProps }: AppProps) {
-  const match = useMediaQuery(sizes.tablet);
+  const isTablet = useMediaQuery(sizes.tablet);
 
   return (
     <>
@@ -41,14 +41,14 @@ export default function App({ Component, pageProps }: AppProps) {
         </Head>
 
         <Nav>
-          <Logo background height={match ? 70 : 14} width={match ? 101 : 28} />
-          <Menu isLaptop={match} />
+          <Logo background height={isTablet ? 70 : 14} width={isTablet ? 101 : 28} />
+          <Menu />
         </Nav>
 
         <main>
           <Component {...pageProps} />
         </main>
-        <Footer isLaptop={match} />
+        <Footer />
       </ThemeProvider>
       <Analytics />
     </>

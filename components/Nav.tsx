@@ -15,6 +15,16 @@ const Nav = styled.nav`
 
   background-color: ${(props) => props.theme.components.nav.colors.background};
 
+  @media ${devices.tablet} {
+    left: calc((100vw - ${(props) => props.theme.tabWidth}px) / 2);
+    padding: 0 64px;
+    top: 44px;
+    width: calc(${(props) => props.theme.tabWidth}px - 238px);
+    height: initial;
+
+    background-color: initial;
+  }
+
   @media ${devices.laptop} {
     left: calc((100vw - ${(props) => props.theme.pageWidth}px) / 2);
     padding: 0 122px;

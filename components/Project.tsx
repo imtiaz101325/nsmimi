@@ -14,6 +14,11 @@ const ProjectContainer = styled.div`
 
   text-align: center;
 
+  @media ${devices.tablet} {
+    max-width: 616px;
+    margin: 0 3rem;
+  }
+
   @media ${devices.laptop} {
     display: initial;
 
@@ -42,6 +47,10 @@ const Title = styled.h1`
   font-size: 34px;
   line-height: 34px;
   margin-bottom: 1rem;
+
+  @media ${devices.tablet} {
+    font-size: 40px;
+  }
 
   @media ${devices.laptop} {
     font-weight: 800;

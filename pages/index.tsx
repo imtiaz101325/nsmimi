@@ -1,6 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ReactNode } from "react";
 import styled from "styled-components";
 import { Project } from "../components";
 import { useMediaQuery } from "../hooks";
@@ -38,6 +36,20 @@ const Section = styled.div<SectionProps>`
     left: calc(((100vw - ${(props) => props.theme.screenWidth}px) / 2) + 48px);
   }
 
+  @media ${devices.tablet} {
+    &:before {
+      width: 127px;
+      right: calc(
+        ((100vw - ${(props) => props.theme.tabWidth}px) / 2) + 128px
+      );
+    }
+
+    &:nth-child(even):before {
+      right: 0;
+      left: calc(((100vw - ${(props) => props.theme.tabWidth}px) / 2) + 128px);
+    }
+  }
+
   @media ${devices.laptop} {
     &:before {
       width: 101px;
@@ -64,6 +76,10 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media ${devices.tablet} {
+    max-width: ${(props) => props.theme.tabWidth}px;
+  }
 
   @media ${devices.laptop} {
     flex-direction: row;
@@ -116,7 +132,8 @@ const ProjectImage = styled(Image)<ProjectImageProps>`
 `;
 
 export default function Home() {
-  const match = useMediaQuery(sizes.tablet);
+  const isLaptop = useMediaQuery(sizes.laptop);
+  const isTablet = useMediaQuery(sizes.tablet);
 
   return (
     <>
@@ -143,7 +160,7 @@ export default function Home() {
       </Section>
       <Section backgroundColor="yellow">
         <Content>
-          {match && (
+          {isLaptop && (
             <ProjectImage
               src="/home/yfcresponsivepic.png"
               alt="responsive_website_design"
@@ -157,12 +174,12 @@ export default function Home() {
             subtitle="A Responsive Website for a social organization of Bangladesh"
             desc="Youth for Change Bangladesh is a social organization. The goal of Youth For Change Bangladesh is to ensure women empowerment and gender equity at the fullest sense."
           >
-            {!match && (
+            {!isLaptop && (
               <ProjectImage
                 src="/home/yfcresponsivepic.png"
                 alt="responsive_website_design"
-                width={285}
-                height={295}
+                width={isTablet ? 432 : 285}
+                height={isTablet ? 450 : 295}
               />
             )}
           </Project>
@@ -176,16 +193,16 @@ export default function Home() {
             subtitle="For learning about Sexual and Reproductive Health and Rights"
             desc="Youth for Change is a Bangladesh-based  social organization focused on youth and it’s rights. The organization needs a tool that helps people learn about Sexual and Reproductive Health and Rights. Youth for Change Bangladesh’s primary target users include, teenagers, college students, and adults who are concerned with the youth right and would like to learn more about what they can do to enrich knowledge."
           >
-            {!match && (
+            {!isLaptop && (
               <ProjectImage
                 src="/home/yfcapppic.png"
                 alt="responsive_website_design"
-                width={294}
-                height={291}
+                width={isTablet ? 490 : 294}
+                height={isTablet ? 485 : 291}
               />
             )}
           </Project>
-          {match && (
+          {isLaptop && (
             <ProjectImage
               src="/home/yfcapppic.png"
               alt="responsive_website_design"
@@ -199,7 +216,7 @@ export default function Home() {
       </Section>
       <Section backgroundColor="sky">
         <Content>
-          {match && (
+          {isLaptop && (
             <ProjectImage
               src="/home/catadopterreponsivepic.png"
               alt="responsive_website_design"
@@ -214,12 +231,12 @@ export default function Home() {
             subtitle="A Responsive Website for cat adoption"
             desc="I have designed a  responsive website for getting cats adopted or adopting one online which save user’s time. It is one of my personal project’s where found the urgency for getting my cats adopted and faced many unknown consequences. These events inspired me to design a user friendly and useful website for adopting cats and getting adopted one."
           >
-            {!match && (
+            {!isLaptop && (
               <ProjectImage
                 src="/home/catadopterreponsivepic.png"
                 alt="responsive_website_design"
-                width={338}
-                height={211}
+                width={isTablet ? 614 : 338}
+                height={isTablet ? 390 : 211}
               />
             )}
           </Project>
@@ -233,16 +250,16 @@ export default function Home() {
             subtitle="For art galleries"
             desc="This is my very first projrct. In this project, I had created a new artist bio app to help people find about artists, events and buying art event tickets so that  they can skip physical labor and the payment process is streamlined."
           >
-            {!match && (
+            {!isLaptop && (
               <ProjectImage
                 src="/home/artiesbioappic.png"
                 alt="responsive_website_design"
-                width={308}
-                height={290}
+                width={isTablet ? 540 : 308}
+                height={isTablet ? 498 : 290}
               />
             )}
           </Project>
-          {match && (
+          {isLaptop && (
             <ProjectImage
               src="/home/artiesbioappic.png"
               alt="responsive_website_design"

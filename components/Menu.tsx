@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { devices } from "../utils";
+import { useMediaQuery } from "../hooks";
+import { devices, sizes } from "../utils";
 
 const MenuBox = styled.div`
   display: flex;
@@ -23,11 +24,9 @@ const MenuLabel = styled.label`
   line-height: 20px;
 `;
 
-interface MenuProps {
-  isLaptop: boolean;
-}
-
-export default function Menu({ isLaptop }: MenuProps) {
+export default function Menu() {
+  const isLaptop = useMediaQuery(sizes.laptop);
+  
   return (
     <MenuBox>
       {isLaptop ? (

@@ -20,5 +20,5 @@ export default function Logo({ background, height, width }: LogoProps) {
     );
   }
 
-  return <Image src="/logo.svg" alt="logo" height={70} width={101} />;
+  return <Image src="/logo.svg" alt="logo" height={height} width={width} />;
 }

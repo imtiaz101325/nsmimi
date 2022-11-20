@@ -9,6 +9,10 @@ const FooterContainer = styled.footer`
   width: 100vw;
   height: 112px;
 
+  @media ${devices.tablet} {
+    height: 202px;
+  }
+
   @media ${devices.laptop} {
     height: 221px;
   }
@@ -25,7 +29,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+
+  @media ${devices.tablet} {
+    height: 99px;
+    max-width: calc(${(props) => props.theme.tabWidth}px - 128px);
+    padding-top: 64px;
+  }
 
   @media ${devices.laptop} {
     height: 100%;
@@ -40,6 +49,10 @@ const Social = styled.div`
   height: 32px;
   display: flex;
   flex-wrap: wrap;
+
+  @media ${devices.tablet} {
+    width: 122px;
+  }
 
   @media ${devices.laptop} {
     width: 293px;
@@ -85,10 +98,18 @@ const Copyright = styled.p`
   font-weight: 400;
   font-size: 7px;
   line-height: 8px;
+
   text-align: right;
+
   padding-right: calc(
     ((100vw - ${(props) => props.theme.screenWidth}px) / 2) + 30px
   );
+
+  @media ${devices.tablet} {
+    padding-right: calc(
+      ((100vw - ${(props) => props.theme.tabWidth}px) / 2) + 64px
+    );
+  }
 
   @media ${devices.laptop} {
     font-size: 12px;
@@ -99,25 +120,68 @@ const Copyright = styled.p`
   }
 `;
 
-interface FooterProps {
-  isLaptop: boolean
+interface getLogoDimensions {
+  isTablet: boolean;
+  isLaptop: boolean;
 }
 
-export default function Footer({ isLaptop } : FooterProps) {
-  const match = useMediaQuery(sizes.tablet);
+function getLogoDimensions({
+  isTablet,
+  isLaptop,
+}: getLogoDimensions): [number, number] {
+  if (isLaptop) {
+    return [64.86, 130.44];
+  }
+
+  if (isTablet) {
+    return [99, 180.92];
+  }
+
+  return [40, 88.49];
+}
+
+interface getSocialDimensions {
+  isTablet: boolean;
+  isLaptop: boolean;
+}
+
+function getSocialDimensions({
+  isTablet,
+  isLaptop,
+}: getSocialDimensions): [number, number] {
+  if (isLaptop) {
+    return [30, 30];
+  }
+
+  if (isTablet) {
+    return [40, 40];
+  }
+
+  return [16, 16];
+}
+
+export default function Footer() {
+  const isTablet = useMediaQuery(sizes.tablet);
+  const isLaptop = useMediaQuery(sizes.laptop);
+
+  const [logoHeight, logoWidth] = getLogoDimensions({ isTablet, isLaptop });
+  const [socialHeight, socialWidth] = getSocialDimensions({
+    isTablet,
+    isLaptop,
+  });
 
   return (
     <FooterContainer>
       <Wrapper>
-        <Logo height={match ? 70 : 40} width={match ? 101 : 88.5} />
+        <Logo height={logoHeight} width={logoWidth} />
         <Social>
           {socials.map(({ link, icon, alt }) => (
             <a href={link} key={alt} target="_blank" rel="noopener noreferrer">
               <Image
                 src={icon}
                 alt={alt}
-                height={match ? 30 : 16}
-                width={match ? 30 : 16}
+                height={socialHeight}
+                width={socialWidth}
               />
             </a>
           ))}
