@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Footer, Logo, Menu, Nav } from "../components";
 
 import theme from "../theme";
-import { devices, sizes } from "../utils";
+import { sizes } from "../utils";
 import { useMediaQuery } from "../hooks";
 
 const roboto = Roboto_Flex({
@@ -24,9 +24,31 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
+interface getLogoDimensions {
+  isLaptop: boolean;
+  isTablet: boolean;
+}
+
+function getLogoDimensions({
+  isLaptop,
+  isTablet,
+}: getLogoDimensions): [number, number] {
+  if (isLaptop) {
+    return [70, 101];
+  }
+
+  if (isTablet) {
+    return [62, 117.73];
+  }
+
+  return [14.71, 28.18];
+}
+
 export default function App({ Component, pageProps }: AppProps) {
   const isTablet = useMediaQuery(sizes.tablet);
+  const isLaptop = useMediaQuery(sizes.laptop);
 
+  const [logoHeight, logoWidth] = getLogoDimensions({ isTablet, isLaptop });
   return (
     <>
       <GlobalStyles />
@@ -41,7 +63,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </Head>
 
         <Nav>
-          <Logo background height={isTablet ? 70 : 14} width={isTablet ? 101 : 28} />
+          <Logo background height={logoHeight} width={logoWidth} />
           <Menu />
         </Nav>
 
