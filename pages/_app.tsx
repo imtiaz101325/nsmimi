@@ -37,7 +37,7 @@ const Nav = styled.nav`
 
   background-color: ${(props) => props.theme.components.nav.colors.background};
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     left: calc((100vw - ${(props) => props.theme.pageWidth}px) / 2);
     padding: 0 122px;
     top: 44px;
@@ -77,7 +77,7 @@ const MenuBox = styled.div`
   width: 33px;
   height:14px;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     height: 70px;
     width: 101px;
     background-color: ${(props) =>
@@ -117,7 +117,7 @@ const Footer = styled.footer`
   width: 100vw;
   height: 112px;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     height: 221px;
   }
 `;
@@ -135,7 +135,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     height: 100%;
     max-width: calc(${(props) => props.theme.pageWidth}px - 216px);
 
@@ -149,7 +149,7 @@ const Social = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     width: 293px;
     flex-wrap: initial;
     justify-content: space-between;
@@ -198,7 +198,7 @@ const Copyright = styled.p`
     ((100vw - ${(props) => props.theme.screenWidth}px) / 2) + 30px
   );
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     font-size: 12px;
     line-height: 20px;
     text-align: initial;

@@ -37,7 +37,7 @@ const Section = styled.div<SectionProps>`
     left: calc(((100vw - ${(props) => props.theme.screenWidth}px) / 2) + 48px);
   }
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     &:before {
       width: 101px;
       right: calc(
@@ -64,10 +64,11 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
     max-width: ${(props) => props.theme.pageWidth}px;
   }
 `;
@@ -79,7 +80,7 @@ const Intro = styled.p`
   font-size: 20px;
   line-height: 22px;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     max-width: 954px;
     font-weight: 300;
     font-stretch: 75%;
@@ -101,7 +102,7 @@ interface ProjectImageProps {
 const ProjectImage = styled(Image)<ProjectImageProps>`
   margin-bottom: 2rem;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     margin: initial;
 
     ${(props) => {
@@ -124,12 +125,16 @@ const ProjectContainer = styled.div`
 
   text-align: center;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     display: initial;
 
     text-align: initial;
 
     max-width: 506px;
+    margin: 0 3rem;
+  }
+
+  @media ${devices.desktop} {
     margin: initial;
 
     &:nth-child(odd) {
@@ -149,7 +154,7 @@ const Title = styled.h1`
   line-height: 34px;
   margin-bottom: 1rem;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     font-weight: 800;
   }
 `;
@@ -159,7 +164,7 @@ const Subtitle = styled.p`
   line-height: 14px;
   margin-bottom: 2rem;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     font-weight: 300;
     font-size: 24px;
     line-height: 22px;
@@ -174,7 +179,7 @@ const Description = styled.p`
 
   text-align: left;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     font-size: 16px;
     line-height: 20px;
     margin-bottom: 64px;
@@ -191,7 +196,7 @@ const CallToAction = styled(Link)`
   font-size: 12px;
   line-height: 14px;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     padding: 22px 74px;
     font-weight: 700;
     font-size: 24px;
